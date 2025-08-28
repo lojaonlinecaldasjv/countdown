@@ -3,15 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <title>Countdown Webinar</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
-    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; text-align:center; }
-    h3 { margin:0.5rem 0; font-weight:700; }
-    .timer { display:grid; grid-template-columns:repeat(4,1fr); gap:.75rem; max-width:420px; margin:0 auto 1rem; }
-    .box { padding:.75rem; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
-    .box span { display:block; font-size:1.5rem; font-weight:800; }
-    .box small { opacity:.7; font-size:.8rem; }
-    a.btn { display:inline-block; padding:.6rem 1rem; border-radius:999px; font-weight:700; text-decoration:none; background:#e11900; color:#fff; }
-    .row { display:flex; justify-content:center; align-items:center; gap:1rem; margin-top:1rem; flex-wrap:wrap; }
+    body { 
+      margin:0; 
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; 
+      text-align:center; 
+    }
+    h3 { 
+      margin:0.5rem 0; 
+      font-weight:700; 
+    }
+    .timer { 
+      display:grid; 
+      grid-template-columns:repeat(4,1fr); 
+      gap:.75rem; 
+      max-width:420px; 
+      margin:0 auto .5rem; /* menos espaço abaixo do contador */
+    }
+    .box { 
+      padding:.75rem; 
+      border-radius:12px; 
+      box-shadow:0 1px 4px rgba(0,0,0,.06); 
+    }
+    .box span { 
+      display:block; 
+      font-size:1.5rem; 
+      font-weight:800; 
+    }
+    .box small { 
+      opacity:.7; 
+      font-size:.8rem; 
+    }
+    a.btn { 
+      display:inline-block; 
+      padding:.6rem 1rem; 
+      border-radius:999px; 
+      font-weight:700; 
+      text-decoration:none; 
+      background:#e11900; 
+      color:#fff; 
+    }
+    .row { 
+      display:flex; 
+      justify-content:center; 
+      align-items:center; 
+      gap:.5rem;     /* menos espaço entre data e botão */
+      flex-wrap:wrap; 
+      margin-top:.25rem; /* reduzido para menos espaço extra */
+    }
+    #when {
+      opacity:.8;
+      margin:0;
+    }
   </style>
 </head>
 <body>
@@ -26,7 +70,7 @@
 
   <!-- Linha com data e botão lado a lado -->
   <div class="row">
-    <div id="when" style="opacity:.8;"></div>
+    <div id="when"></div>
     <a class="btn" href="https://my.demio.com/ref/ZfWH1HpEmKGvZ57p" rel="noopener" target="_blank">Registar agora</a>
   </div>
 
