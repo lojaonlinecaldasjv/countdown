@@ -1,43 +1,55 @@
-<meta charset="UTF-8">
-<title></title>
-<style type="text/css">body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; text-align:center; }
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown Webinar</title>
+  <style>
+    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; text-align:center; }
     h3 { margin:0.5rem 0; font-weight:700; }
     .timer { display:grid; grid-template-columns:repeat(4,1fr); gap:.75rem; max-width:420px; margin:0 auto 1rem; }
     .box { padding:.75rem; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
     .box span { display:block; font-size:1.5rem; font-weight:800; }
     .box small { opacity:.7; font-size:.8rem; }
-    a.btn { display:inline-block; padding:.75rem 1rem; border-radius:999px; font-weight:700; text-decoration:none; background:#57cbf5; color:#0b2a35; }
-</style>
-<h3>broncolor Stelos — Webinar de Lan&ccedil;amento</h3>
+    a.btn { display:inline-block; padding:.6rem 1rem; border-radius:999px; font-weight:700; text-decoration:none; background:#e11900; color:#fff; }
+    .row { display:flex; justify-content:center; align-items:center; gap:1rem; margin-top:1rem; flex-wrap:wrap; }
+  </style>
+</head>
+<body>
+  <h3>broncolor Stelos — Webinar de Lançamento</h3>
 
-<div class="timer">
-<div class="box"><span id="d">00</span><small>Dias</small></div>
+  <div class="timer">
+    <div class="box"><span id="d">00</span><small>Dias</small></div>
+    <div class="box"><span id="h">00</span><small>Horas</small></div>
+    <div class="box"><span id="m">00</span><small>Minutos</small></div>
+    <div class="box"><span id="s">00</span><small>Segundos</small></div>
+  </div>
 
-<div class="box"><span id="h">00</span><small>Horas</small></div>
+  <!-- Linha com data e botão lado a lado -->
+  <div class="row">
+    <div id="when" style="opacity:.8;"></div>
+    <a class="btn" href="https://my.demio.com/ref/ZfWH1HpEmKGvZ57p" rel="noopener" target="_blank">Registar agora</a>
+  </div>
 
-<div class="box"><span id="m">00</span><small>Minutos</small></div>
+  <script>
+    const targetISO = '2025-09-02T08:00:00Z';
+    const target = new Date(targetISO).getTime();
 
-<div class="box"><span id="s">00</span><small>Segundos</small></div>
-</div>
-
-<div id="when" style="margin-bottom:1rem;opacity:.8;"></div>
-
-<p><a class="btn" href="https://my.demio.com/ref/ZfWH1HpEmKGvZ57p" rel="noopener" target="_blank">Registar agora</a> <script>
-    const target = new Date('2025-09-02T08:00:00Z').getTime();
-    const d=document.getElementById('d'),h=document.getElementById('h'),
-          m=document.getElementById('m'),s=document.getElementById('s'),
+    const d=document.getElementById('d'),
+          h=document.getElementById('h'),
+          m=document.getElementById('m'),
+          s=document.getElementById('s'),
           w=document.getElementById('when');
 
     try {
-      w.textContent = "Começa em: " + new Date('2025-09-02T08:00:00Z')
+      w.textContent = "Começa em: " + new Date(targetISO)
         .toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'});
     } catch(e){}
 
     function tick(){
       let now=Date.now(),diff=Math.max(0,target-now);
       let days=Math.floor(diff/86400000); diff-=days*86400000;
-      let hrs=Math.floor(diff/3600000); diff-=hrs*3600000;
-      let mins=Math.floor(diff/60000); diff-=mins*60000;
+      let hrs=Math.floor(diff/3600000);  diff-=hrs*3600000;
+      let mins=Math.floor(diff/60000);    diff-=mins*60000;
       let secs=Math.floor(diff/1000);
       d.textContent=String(days).padStart(2,"0");
       h.textContent=String(hrs).padStart(2,"0");
@@ -46,4 +58,6 @@
     }
     tick();
     setInterval(tick,1000);
-  </script></p>
+  </script>
+</body>
+</html>
